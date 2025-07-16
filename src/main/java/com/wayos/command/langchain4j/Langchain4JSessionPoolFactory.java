@@ -352,7 +352,7 @@ public class Langchain4JSessionPoolFactory {
 						 * Fire message as a keyword to the current session of context and parse later
 						 */
 						if (varChangedName.startsWith("#m_")) {
-							
+														
 							//targetSessionId = varChangedName.substring("#m_".length());
 							
 							targetSessionId = sessionId;//Support Fire from API sessionId=<sessionId>&message=<key>
@@ -398,7 +398,41 @@ public class Langchain4JSessionPoolFactory {
 	 */
 	private CommandNode createWakeupCommandNode(Session session) {
 		
-		return new Langchain4JWakeupCommandNode(session);                	
+		CommandNode wakeupCommandNode;
+		
+		/**
+		 * Try with wayobot.context.wakeup.impl property for Optional Plugin
+		 */
+		if (session.context().prop("wayobot.context.wakeup.impl")!=null) {
+			
+			try {
+				
+				Class commandNodeClass = Class.forName(session.context().prop("wayobot.context.wakeup.impl"));
+				
+				Constructor commandNodeConstructor = commandNodeClass.getDeclaredConstructor(Session.class);
+				
+				commandNodeConstructor.setAccessible(true);
+				
+				wakeupCommandNode = (CommandNode) commandNodeConstructor.newInstance(session);
+				
+			} catch (Exception e) {
+				
+				throw new RuntimeException(e);
+				
+			}
+			
+		} 
+		
+		/**
+		 * Default WakeupCommandNode
+		 */
+		else {
+			
+		    wakeupCommandNode = new Langchain4JWakeupCommandNode(session);                	
+		    
+		}		
+		
+		return wakeupCommandNode;                	
 		    
 	}
 	
