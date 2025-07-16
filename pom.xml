@@ -15,7 +15,7 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>dev.langchain4j</groupId>
 			<artifactId>langchain4j</artifactId>
@@ -37,8 +37,8 @@
 
 		<!-- Import langchain4j Dependencies library -->
 		<dependency>
-			<groupId>test.stable.version.of.langchain4j</groupId>
-			<artifactId>teststableversionofLangchain4j</artifactId>
+			<groupId>release</groupId>
+			<artifactId>langchain4jPluginsLib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
