@@ -89,6 +89,32 @@ public class Langchain4JSessionPoolFactory {
 
 		            String contextName = nodeEvent.messageObject.toString();
 		            if (contextName.endsWith(".backup")) return;
+		            
+		            System.out.println(contextName + " Updated!!!!");
+		            
+	            	/**
+	            	 * TODO: Notify Logic Designer for Advance Debugging
+	            	 */            	
+					WebPusher webPusher = (WebPusher) Application.instance().get("web");
+					
+			    	String [] tokens = contextName.split("/");
+			    	String toAccountId = tokens[0];
+			    	String toBotId = tokens[1];
+			    	
+			    	//String fromSessionId = session.vars("#sessionId");
+			    	String targetSessionId = "logic-designer";
+			    	
+			    	JSONObject data = new JSONObject();
+			    	
+			    	data.put("type", "update");
+			    	data.put("fromAccountId", toAccountId);
+			    	data.put("fromBotId", toBotId);
+			    	//data.put("fromSessionId", fromSessionId);
+			    	//data.put("nodeId", nodeEvent.node.id());
+			    	data.put("message", nodeEvent.messageObject.toString());
+			    					
+					webPusher.push(contextName, targetSessionId, data);
+		            
 
 		        }
 		        

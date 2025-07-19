@@ -7,6 +7,7 @@ import com.wayos.Session;
 import com.wayos.command.AsyncCommandNode;
 import com.wayos.command.BotCallerCommandNode;
 import com.wayos.command.CommandNode;
+import com.wayos.command.CronUpdateCommandNode;
 import com.wayos.command.DateStringToTimestampCommandNode;
 import com.wayos.command.DebugCommandNode;
 import com.wayos.command.EchoCommandNode;
@@ -118,6 +119,8 @@ public class Langchain4JWakeupCommandNode extends CommandNode {
         session.commandList().add(new BotCallerCommandNode(session, new String[]{"call"}, Match.Head));
         //session.commandList().add(new DateStringToTimestampCommandNode(session, new String[]{"dateStringToTimestamp"}, Match.Head));
         session.commandList().add(new IsExpiredCommandNode(session, new String[]{"expired"}, Match.Head));
+        
+        session.commandList().add(new CronUpdateCommandNode(session, new String[]{"crons"}, Match.Head));
         
         /*
         session.commandList().add(new EchoCommandNode(session, new String[]{"echo"}, Match.Head));
