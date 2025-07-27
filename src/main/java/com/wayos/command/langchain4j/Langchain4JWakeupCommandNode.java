@@ -15,6 +15,9 @@ import com.wayos.command.EntityManagerCommandNode;
 import com.wayos.command.GreetingCommandNode;
 import com.wayos.command.IsExpiredCommandNode;
 import com.wayos.command.Key;
+import com.wayos.command.StartProcessCommandNode;
+import com.wayos.command.StopProcessCommandNode;
+import com.wayos.command.WaitCommandNode;
 import com.wayos.command.WakeCommandNode;
 import com.wayos.command.admin.AdminCommandNode;
 import com.wayos.command.admin.AdminContextCommandNode;
@@ -115,6 +118,10 @@ public class Langchain4JWakeupCommandNode extends CommandNode {
          */
         session.commandList().add(new PromptCommandNode(session, new String[]{"prompt"}));
         session.commandList().add(new AsyncCommandNode(session, new String[]{"aprompt"}, new AsyncPromptRunner()));
+        
+        session.commandList().add(new StartProcessCommandNode(session, new String[]{"start"}));
+        session.commandList().add(new WaitCommandNode(session, new String[]{"wait"}));
+        session.commandList().add(new StopProcessCommandNode(session, new String[]{"stop"}));
         
         session.commandList().add(new BotCallerCommandNode(session, new String[]{"call"}, Match.Head));
         //session.commandList().add(new DateStringToTimestampCommandNode(session, new String[]{"dateStringToTimestamp"}, Match.Head));
