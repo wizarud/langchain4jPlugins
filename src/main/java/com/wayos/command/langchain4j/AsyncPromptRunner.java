@@ -1,12 +1,7 @@
 package com.wayos.command.langchain4j;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import com.wayos.Context;
 import com.wayos.MessageObject;
@@ -56,6 +51,8 @@ public class AsyncPromptRunner extends AsyncTask.Runner {
 			
 			Consumer<String> partialResponseHandler = new Consumer<String>() {
 				
+				private boolean isFirstToken = true;
+				
 				private boolean isPartialParams = false;
 
 				@Override
@@ -88,7 +85,17 @@ public class AsyncPromptRunner extends AsyncTask.Runner {
 						
 						String botId = tokens[1];							
 						
-				    	WebPusher.send(accountId, botId, sessionMemoryId, partialResponse, "partial");
+						if (isFirstToken) {
+							
+					    	WebPusher.send(accountId, botId, sessionMemoryId, partialResponse, "begin");
+					    	
+					    	isFirstToken = false;
+					    	
+						} else {
+							
+					    	WebPusher.send(accountId, botId, sessionMemoryId, partialResponse, "partial");
+					    	
+						}
 												
 					}
 					
