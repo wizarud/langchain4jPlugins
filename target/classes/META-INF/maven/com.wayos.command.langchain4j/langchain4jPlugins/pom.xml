@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.wayos.command.langchain4j</groupId>
 	<artifactId>langchain4jPlugins</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2025.8.8</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -35,20 +35,53 @@
 			<artifactId>langchain4j-ollama</artifactId>
 			<version>1.1.0-rc1</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-ollama</artifactId>
+			<version>1.1.0-rc1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-easy-rag</artifactId>
+			<version>1.1.0-beta7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-hugging-face</artifactId>
+			<version>1.1.0-beta7</version>
+		</dependency>
+
+		<!--I got CPU Unsatisfy Link Error when use above versions!!! -->
+		<dependency>
+			<groupId>ai.djl.huggingface</groupId>
+			<artifactId>tokenizers</artifactId>
+			<version>0.28.0</version>
+		</dependency>		
 
 		<!-- Import wayOS Runtime library -->
 		<dependency>
 			<groupId>com.wayos</groupId>
 			<artifactId>runtime</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>2025.8.8</version>
 		</dependency>
-
+		
 		<!-- Import langchain4j Dependencies library -->
+		<!--
 		<dependency>
 			<groupId>release</groupId>
 			<artifactId>langchain4jPluginsLib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		-->		
 
 	</dependencies>
 </project>

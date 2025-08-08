@@ -65,6 +65,10 @@ public class AsyncPromptRunner extends AsyncTask.Runner {
 						return;
 					}					
 					
+					/**
+					 * Use Prompt to format output as parameter in the last, blabla bla.. # params..
+					 * TODO: Use {{...}} format if better
+					 */
 					if (partialResponse.contains("#")) {
 						
 						isPartialParams = true;
