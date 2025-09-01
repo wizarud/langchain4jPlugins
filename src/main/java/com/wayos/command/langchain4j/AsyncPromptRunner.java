@@ -20,7 +20,7 @@ public class AsyncPromptRunner extends AsyncTask.Runner {
 	@Override
 	public void run(MessageObject messageObject) {
 				
-		AsyncCommandNode asyncCommandNode = getAsyncCommandNode();
+		AsyncCommandNode asyncCommandNode = getAsyncCommandNode();//Helper Object to access session, cleanHooks and context
 		
 		try {
 						
