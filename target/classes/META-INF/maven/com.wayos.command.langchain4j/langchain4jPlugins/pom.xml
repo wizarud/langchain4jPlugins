@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.wayos.command.langchain4j</groupId>
 	<artifactId>langchain4jPlugins</artifactId>
-	<version>2025.9.2.2</version>
+	<version>2025.9.2.7</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>com.wayos</groupId>
 			<artifactId>runtime</artifactId>
-			<version>2025.9.2.1</version>
+			<version>2025.9.2.7</version>
 		</dependency>
 
 		<!-- Import langchain4j Dependencies library -->
